@@ -71,7 +71,7 @@ public class Menu {
         int opcao = 0;
        
         do{
-        System.out.println("Estado da memória: "+ estadoMemoria);
+        System.out.println("\nEstado da memória: "+ estadoMemoria);
         System.out.println("Opções: ");
         System.out.println("\n(1) Somar");
         System.out.println("(2) Subtrair");
@@ -83,16 +83,14 @@ public class Menu {
         Scanner ler = new Scanner(System.in);
         try{
             opcao = ler.nextInt();
-            if (opcao>6){
-                JOptionPane.showMessageDialog(null, "Opção não disponível!");
+            if (opcao<1 || opcao>6){
+                System.out.println("Opção não disponível!");
             }
         }
         catch(InputMismatchException e){
-            
-            JOptionPane.showMessageDialog(null, "Caracter Inválido!");
+            System.out.println("Caracter Inválido!");
         }
-        }
-        while (opcao<1 || opcao >6);
+        }while (opcao<1 || opcao >6);
         return opcao;
     }
     
@@ -107,7 +105,7 @@ public class Menu {
         return estadoMemoria + valor;
         
     }
-     public static int subtracao(int estadoMemoria){
+    public static int subtracao(int estadoMemoria){
         int valor;
         Scanner ler = new Scanner(System.in);
         System.out.print("Digite o valor para subtrair: ");
@@ -115,7 +113,7 @@ public class Menu {
         return estadoMemoria - valor;
         
     }
-      public static int multiplicacao(int estadoMemoria){
+    public static int multiplicacao(int estadoMemoria){
         int valor;
         Scanner ler = new Scanner(System.in);
         System.out.print("Digite o valor para multiplicar: ");
@@ -123,26 +121,26 @@ public class Menu {
         return estadoMemoria * valor;
         
     }
-      public static int divisao(int estadoMemoria){
+    public static int divisao(int estadoMemoria){
         int resultado =0,valor =0;
-        boolean valido = true;
+        boolean valido = false;
         Scanner ler = new Scanner(System.in);
         do{
             System.out.print("Digite o valor para dividir: ");
-            
-                valor = ler.nextInt();
- 
+            valor = ler.nextInt();
         try{
              resultado = estadoMemoria / valor;
+             valido = true;
         }
         catch(ArithmeticException a){
-                System.out.println("Não é possível dividir por 0");
-                valido = false;
+            System.out.println("Não é possível dividir por 0");
             }
-        }while (valido = false);
+        }while (valido != true);
+        
       return resultado;
       }
-      public static int limpar(){
+    
+    public static int limpar(){
         return 0;
       }
 }
